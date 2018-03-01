@@ -5,9 +5,14 @@
     xmlns:local="using:ClipBoardGoogler"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" KeyUp="Google_KeyUpAsync">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="86,0,70,190">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="351*"/>
+            <ColumnDefinition Width="34*"/>
+            <ColumnDefinition Width="287*"/>
+        </Grid.ColumnDefinitions>
+        <WebView x:Name="Google" Source="http://www.google.com/search?q=clipboard googler" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="708" Margin="30,66,0,0" VerticalAlignment="Top" Width="1284"  />
     </Grid>
 </Page>

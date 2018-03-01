@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,26 @@ namespace ClipBoardGoogler
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void Google_KeyUpAsync(object sender, KeyRoutedEventArgs e)
+        {
+            DataPackageView dataPackageView = Clipboard.GetContent();
+            if (dataPackageView.Contains(StandardDataFormats.Text))
+            {
+                string text = await dataPackageView.GetTextAsync();
+                Google.Navigate(new Uri("http://www.google.com/search?q=" + text + "hmmm"));
+            }
+        }
+
+        private async void TextBox_KeyUpAsync(object sender, KeyRoutedEventArgs e)
+        {
+            DataPackageView dataPackageView = Clipboard.GetContent();
+            if (dataPackageView.Contains(StandardDataFormats.Text))
+            {
+                string text = await dataPackageView.GetTextAsync();
+                Google.Navigate(new Uri("http://www.google.com/search?q=" + text));
+            }
         }
     }
 }
